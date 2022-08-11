@@ -1,11 +1,12 @@
 .container {
-    margin: auto;
-    max-width: 500px;
     font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
   
   .heading {
-    color: rebeccapurple;
+    color: rgb(9, 104, 194);
   }
   .nav-links {
     display: flex;
@@ -18,3 +19,7 @@
   .nav-link-text {
     color: black;
   }
+
+.background {
+    background-color: bisque;
+}

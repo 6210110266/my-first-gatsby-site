@@ -8,7 +8,7 @@ const StudentDetailPage = () => {
   return (
     <div className='card-container '>
         <Layout pageTitle="ข้อมูลนักศึกษา" className="heading">
-    <table >
+    {/* <table >
         <tr className='first-line'>
         <th className='th1'>ข้อมูลทั่วไป</th>
         <td></td> 
@@ -73,7 +73,7 @@ const StudentDetailPage = () => {
           <button onClick={()=>{navigate("/subject-detail")}} className='button'><FaInfoCircle/></button>
         </td>  
         </tr>
-      </table>
+      </table> */}
     </Layout>
     </div>
   )

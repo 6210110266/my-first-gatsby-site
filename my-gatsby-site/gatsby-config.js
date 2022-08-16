@@ -6,13 +6,13 @@ module.exports = {
     {
 			resolve: '@directus/gatsby-source-directus',
 			options: {
-				url: `http://127.0.0.1:8055`, // Fill with your Directus instance address
+				url: `https://opxeubxg.directus.app/`, // Fill with your Directus instance address
 				auth: {
-					// token: 'my_secret_token', // You can use a static token from an user
+					token: 'i_OSVQLA95nw7Z48Rge77-jqur2PdO_A', // You can use a static token from an user
 
 					// Or you can use the credentials of an user
-					email: 'admin@gmail.com',
-					password: '12345678',
+					// email: 'admin@gmail.com',
+					// password: '12345678',
 				},
 			},
 		},

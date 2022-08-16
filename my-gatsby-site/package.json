@@ -16,6 +16,9 @@
   },
   "dependencies": {
     "@directus/gatsby-source-directus": "^9.14.1",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/material": "^5.10.0",
     "bulma": "^0.9.4",
     "gatsby": "^4.20.0",
     "gatsby-source-directus": "^0.0.44",

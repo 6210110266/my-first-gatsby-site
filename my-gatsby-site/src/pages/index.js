@@ -3,25 +3,83 @@ import Layout from '../components/layout'
 import "./index.css"
 import { navigate } from "gatsby"
 import { FaInfoCircle } from 'react-icons/fa';
-import {graphql } from 'gatsby'
+import { useStaticQuery,graphql } from 'gatsby'
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@mui/material';
+import { tableCellClasses } from '@mui/material/TableCell';
+import { styled } from '@mui/material/styles';
 
 export const query = graphql`
 query{
   directus {
-      student {
+      Student {
         id
-        studentID
-        fullname   
+        student_id
+        firstname  
+        lastname 
       }
     }
 }`
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
 
 const IndexPage = ({data: {directus} }) => {
     return (
     <Layout pageTitle="รายชื่อนักศึกษา">
       <div>
-      <p>คำอธิบายอะไรก็ว่าไป</p>
-    <div aria-label='student-list'>
+      {/* <h1>รายชื่อสมาชิกทั้งหมด</h1> */}
+      <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>ชื่อ</StyledTableCell>
+                <StyledTableCell>นามสกุล</StyledTableCell>
+                <StyledTableCell>รหัสนักศึกษา</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {directus.Student.map((member) => (
+                <StyledTableRow key={member.id}>
+                  <StyledTableCell >
+                    {member.firstname}
+                  </StyledTableCell>
+                  <StyledTableCell >
+                    {member.lastname}
+                  </StyledTableCell>
+                  <StyledTableCell  align="center">
+                    {member.student_id}
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+    {/* <div aria-label='student-list'>
       <table >
         <tr className='first-line'>
           <th>ลำดับ</th>
@@ -31,13 +89,11 @@ const IndexPage = ({data: {directus} }) => {
           <th>รายละเอียด</th>
         </tr>
         <tr className='line1'>
-          <td>1</td>
-          <td className='st-name'>{directus.student[0].fullname.split(" ")[0]}</td>
-          <td className='st-name'>{directus.student[0].fullname.split(" ")[1]}</td>
-          <td className='st-num'>{directus.student[0].studentID}</td>
-          <td>
-          <button onClick={()=>{navigate("/student-detail")}} className='button'><FaInfoCircle/></button>
-          </td>
+        {directus.student.map((student) => (
+               <><td>{student.id}</td><td className='st-name'>{student.fullname.split(" ")[0]}</td><td className='st-name'>{student.fullname.split(" ")[1]}</td><td className='st-num'>{student.studentID}</td><td>
+            <button onClick={() => { navigate("/student-detail"); } } className='button'><FaInfoCircle /></button>
+          </td></>
+              ))}
         </tr>
         <tr className='line2'>
         <td>2</td>
@@ -76,7 +132,7 @@ const IndexPage = ({data: {directus} }) => {
           </td>
         </tr>
       </table>
-    </div>
+    </div> */}
       </div>
     </Layout>
 

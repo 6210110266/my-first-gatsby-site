@@ -1,5 +1,4 @@
-.div {
-    /* border: 1px black; */
+/*.div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,4 +41,4 @@ table {
     border: none;
     background-color: transparent;
     cursor: pointer;
-}
+}*/

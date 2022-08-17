@@ -56,16 +56,16 @@ const SubjectListPage = ({data: {directus} }) => {
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
                         <TableHead>
                             <TableRow>
-                                <StyledTableCell>รหัสวิชา</StyledTableCell>
+                                <StyledTableCell align='center'>รหัสวิชา</StyledTableCell>
                                 <StyledTableCell align='center'>ชื่อวิชา</StyledTableCell>
-                                <StyledTableCell>เซคชั่น</StyledTableCell>
+                                <StyledTableCell align='center'>เซคชั่น</StyledTableCell>
                                 <StyledTableCell align='center'>เวลาเรียน</StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {directus.Subject.map((subject) => (
                                 <StyledTableRow key={subject.id}>
-                                    <StyledTableCell component="th" scope="row">
+                                    <StyledTableCell component="th" scope="row" align='center'>
                                         {subject.code}
                                     </StyledTableCell>
                                     <StyledTableCell align="left">

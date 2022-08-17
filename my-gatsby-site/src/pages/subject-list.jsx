@@ -1,8 +1,6 @@
 import * as React from 'react'
 import Layout from '../components/layout'
-import { navigate } from "gatsby"
-import { FaInfoCircle } from 'react-icons/fa';
-import { useStaticQuery,graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import {
   Paper,
   Table,

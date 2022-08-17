@@ -5,28 +5,32 @@ import {
   heading,
   navLinks,
   navLinkItem,
-  navLinkText
+  navLinkText,
 } from './layout.module.css'
+import { createGlobalStyle } from "styled-components"
+import "./layout.css"
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: rgb(219, 240, 247);
+  }`
 
 const Layout = ({ pageTitle, children }) => {
   return (
-    <div className={container}>
+    <React.Fragment>
+      <GlobalStyle />
+      <div className={container}>
       <title>{pageTitle}</title>
-      <nav>
+      <nav className="nav-bar">
         <ul className={navLinks}>
           <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
+            <Link to="/" className={navLinkText} >
             รายชื่อนักศึกษา
             </Link>
           </li>
           <li className={navLinkItem}>
             <Link to="/subject-list" className={navLinkText}>
               รายวิชาทั้งหมด
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/schedule" className={navLinkText}>
-             ตารางเวลา
             </Link>
           </li>
         </ul>
@@ -36,6 +40,7 @@ const Layout = ({ pageTitle, children }) => {
         {children}
       </main>
     </div>
+    </React.Fragment>
   )
 }
 

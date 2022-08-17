@@ -1,9 +1,7 @@
-import * as React from 'react'
-import Layout from '../components/layout'
-import "./index.css"
-import { navigate } from "gatsby"
-import { FaInfoCircle } from 'react-icons/fa';
-import { useStaticQuery, graphql } from 'gatsby'
+import * as React from "react";
+import Layout from "../components/layout";
+import "./index.css";
+import { graphql } from "gatsby";
 import {
   Box,
   Collapse,
@@ -15,35 +13,36 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography
-} from '@mui/material';
-import { tableCellClasses } from '@mui/material/TableCell';
-import { styled } from '@mui/material/styles';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+  Typography,
+} from "@mui/material";
+import { tableCellClasses } from "@mui/material/TableCell";
+import { styled } from "@mui/material/styles";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 export const query = graphql`
-query{
-  directus {
-    Student {
-      id
-      firstname
-      lastname
-      student_id
-      profile_picture {
+  query {
+    directus {
+      Student {
         id
-      }
-      subjects {
-        Subject_id {
+        firstname
+        lastname
+        student_id
+        profile_picture {
           id
-          section
-          title
-          code
+        }
+        subjects {
+          Subject_id {
+            id
+            section
+            title
+            code
+          }
         }
       }
     }
   }
-}`
+`;
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -56,11 +55,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
@@ -69,26 +68,24 @@ function Row(props) {
   const { student } = props;
   const [open, setOpen] = React.useState(false);
 
-  const url = 'https://opxeubxg.directus.app/assets/'
+  const url = "https://opxeubxg.directus.app/assets/";
 
-  console.log(url + student.profile_picture.id)
+  console.log(url + student.profile_picture.id);
 
   return (
     <React.Fragment>
-      <StyledTableRow key={student.id}>
-        <img width="80" height="80"
+      <StyledTableRow key={student.id} align="center">
+        <img
+          width="80"
+          height="80"
           src={url + student.profile_picture.id}
+          alt="profile_picture"
+          style={{ padding: 5 }}
         />
-        <StyledTableCell >
-          {student.firstname}
-        </StyledTableCell>
-        <StyledTableCell >
-          {student.lastname}
-        </StyledTableCell>
-        <StyledTableCell align="center">
-          {student.student_id}
-        </StyledTableCell>
-        <TableCell>
+        <StyledTableCell>{student.firstname}</StyledTableCell>
+        <StyledTableCell>{student.lastname}</StyledTableCell>
+        <StyledTableCell align="center">{student.student_id}</StyledTableCell>
+        <TableCell align="center">
           <IconButton
             aria-label="expand row"
             size="small"
@@ -108,18 +105,18 @@ function Row(props) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>รหัส</TableCell>
-                    <TableCell>ชื่อวิชา</TableCell>
-                    <TableCell align="right">เซคชั่น</TableCell>
+                    <TableCell align="center">รหัส</TableCell>
+                    <TableCell align="center">ชื่อวิชา</TableCell>
+                    <TableCell align="center">เซคชั่น</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {student.subjects.map((subject) => (
                     <StyledTableRow key={subject.Subject_id.id}>
-                      <StyledTableCell >
+                      <StyledTableCell align="center">
                         {subject.Subject_id.code}
                       </StyledTableCell>
-                      <StyledTableCell >
+                      <StyledTableCell>
                         {subject.Subject_id.title}
                       </StyledTableCell>
                       <StyledTableCell align="center">
@@ -146,11 +143,11 @@ const IndexPage = ({ data: { directus } }) => {
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell>รูป</StyledTableCell>
-                <StyledTableCell>ชื่อ</StyledTableCell>
-                <StyledTableCell>นามสกุล</StyledTableCell>
-                <StyledTableCell>รหัสนักศึกษา</StyledTableCell>
-                <StyledTableCell>รายละเอียด</StyledTableCell>
+                <StyledTableCell align="center">รูป</StyledTableCell>
+                <StyledTableCell align="center">ชื่อ</StyledTableCell>
+                <StyledTableCell align="center">นามสกุล</StyledTableCell>
+                <StyledTableCell align="center">รหัสนักศึกษา</StyledTableCell>
+                <StyledTableCell align="center">รายละเอียด</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -162,8 +159,7 @@ const IndexPage = ({ data: { directus } }) => {
         </TableContainer>
       </div>
     </Layout>
+  );
+};
 
-  )
-}
-
-export default IndexPage
+export default IndexPage;

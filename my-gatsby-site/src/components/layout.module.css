@@ -1,25 +1,32 @@
 .container {
-    font-family: sans-serif;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .heading {
-    color: rgb(9, 104, 194);
-  }
-  .nav-links {
-    display: flex;
-    list-style: none;
-    padding-left: 0;
-  }
-  .nav-link-item {
-    padding-right: 2rem;
-  }
-  .nav-link-text {
-    color: black;
-  }
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.heading {
+  color: rgb(9, 104, 194);
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+.nav-link-item {
+  padding-right: 2rem;
+}
+.nav-link-text{
+  color: black;
+  text-decoration: none;
+}
+
+.nav-link-text:active,
+.nav-link-text:focus{
+  color: rgb(9, 104, 194);
+  text-decoration: none;
+}
 
 .background {
-    background-color: bisque;
+  background-color: bisque;
 }
